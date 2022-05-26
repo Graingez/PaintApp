@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="drawSpace">
+        <canvas id="canvas">
+        </canvas>
+    </div>
+    <div id="toolBox">
+        <div class="utilityTools">
+            <button id="eraser" value="white">Eraser</button>
+            <button id="clearAll">Clear All</button>
+        </div>
+
+
+        <button class="color" id="black" value="black"></button>
+        <button class="color" id="red" value="red"></button>
+        <button class="color" id="blue" value="blue"></button>
+        <button class="color" id="green" value="green"></button>
+        <button class="color" id="pink" value="pink"></button>
+        <button class="color" id="brown" value="brown"></button>
+        <button class="color" id="yellow" value="yellow"></button>
+        <button class="color" id="orange" value="orange"></button>
+        <button class="color" id="purple" value="purple"></button>
+        <div class="slideContainer">
+            <label for="brushSize">Brush Size:</label>
+            <p id="currentSize">1</p>
+            <input type="range" min="1" max="50" value='1' class="slider" id="brushSize">
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
