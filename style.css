@@ -7,42 +7,55 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 *, *:before, *:after {box-sizing: inherit}
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
 .drawspace{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 60%;
+    height: 60%;
     
 }
 .color{
   margin: 10px auto;
 }
 #toolBox{
-  background-color: grey;
+  width: 100%;
+  background-color: lightgray;
   position:absolute;
   top: 0;
   padding: 15px;
+  margin: 0 auto;
   border: 4px solid black;
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  border-radius: 10px;
 }
 .utilityTools{
   display: flex;
-  gap: 5%;
+  justify-content: space-evenly;
 }
 #canvas {
   cursor: pointer;
+  background-color: white;
   border: 2px solid black;
   padding: 0;
 }
 
 #eraser{
   background-color: lightpink;
+  margin: 10px auto;
+  margin-right: 20px;
   height: 30px;
   width: auto;
   display: block;
 }
 #clearAll{
-  background-color: lightgrey;
+  font-size: 15px;
+  background-color: whitesmoke;
+  margin: 10px auto;
   height: 30px;
-  width: auto;
   display: block;
 }
 #black{
@@ -109,8 +122,52 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 .slideContainer p{
   width: 20px;
   background:white;
-  margin: 10px;
   text-align: center;
   border: 1px solid white;
   border-radius: 50px;
+}
+.color:hover,
+.color:focus{
+  cursor: pointer;
+}
+#eraser:hover,
+#eraser:focus{
+  cursor: pointer;
+}
+#clearAll:hover,
+#clearAll:focus{
+  cursor: pointer;
+}
+@media(max-width:905px){
+  #toolBox{
+    width: 150px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .utilityTools{
+  justify-content: center;
+  flex-direction: column;
+}
+.colorPalate{
+ margin: 0 auto;
+ display: flex;
+ flex-wrap: wrap;
+ flex-basis: 33%;
+ justify-content: space-between;
+}
+#clearAll{
+  width: 100%;
+}
+#eraser{
+  width: 100%;
+}
+.color{
+  margin: 10px 0;
+}
+.slideContainer{
+  flex-direction: column;
+}
+#currentSize{
+  margin:5px auto;
+}
 }

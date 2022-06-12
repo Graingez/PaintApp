@@ -6,30 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Doodle App🎨</title>
 </head>
 
 <body>
-    <div class="drawSpace">
-        <canvas id="canvas">
+    <div class="drawSpace wrapper">
+        <canvas id="canvas" width="800" height="800">
         </canvas>
     </div>
-    <div id="toolBox">
+    <div id="toolBox" class="wrapper">
         <div class="utilityTools">
+            <!-- <button id="paintBrush" value="drawBrush"></button> -->
+            <!-- <button id="lineBrush" value="drawLine"></button> -->
             <button id="eraser" value="white">Eraser</button>
             <button id="clearAll">Clear All</button>
         </div>
 
-
-        <button class="color" id="black" value="black"></button>
-        <button class="color" id="red" value="red"></button>
-        <button class="color" id="blue" value="blue"></button>
-        <button class="color" id="green" value="green"></button>
-        <button class="color" id="pink" value="pink"></button>
-        <button class="color" id="brown" value="brown"></button>
-        <button class="color" id="yellow" value="yellow"></button>
-        <button class="color" id="orange" value="orange"></button>
-        <button class="color" id="purple" value="purple"></button>
+        <div class="colorPalate">
+            <button class="color" id="black" value="black"></button>
+            <button class="color" id="red" value="red"></button>
+            <button class="color" id="blue" value="blue"></button>
+            <button class="color" id="green" value="green"></button>
+            <button class="color" id="pink" value="pink"></button>
+            <button class="color" id="brown" value="brown"></button>
+            <button class="color" id="yellow" value="yellow"></button>
+            <button class="color" id="orange" value="orange"></button>
+            <button class="color" id="purple" value="purple"></button>
+        </div>
         <div class="slideContainer">
             <label for="brushSize">Brush Size:</label>
             <p id="currentSize">1</p>

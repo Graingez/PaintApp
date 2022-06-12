@@ -11,7 +11,11 @@ window.addEventListener('load', () => {
         canvas.height = window.innerHeight;
         // canvas.height = window.innerHeight;
         // canvas.width = window.innerWidth;
-        draw(canvas)
+        // draw(canvas)
+    })
+    window.addEventListener('mouseout', (e) => {
+        clientX = null;
+        clientY = null;
     })
 
     // context.beginPath();
@@ -22,8 +26,11 @@ window.addEventListener('load', () => {
 
     // variables
     let paintColor = '';
+    let fillColor = '';
     let painting = false;
 
+    const paintBrush = document.querySelector('#paintBrush');
+    const lineBrush = document.querySelector('#lineBrush');
     function startPosition() {
         painting = true;
     }
@@ -31,7 +38,24 @@ window.addEventListener('load', () => {
         painting = false;
         context.beginPath();
     }
-    function draw(e) {
+    // function squareBrush(e) {
+    //     if (!painting) return;
+    //     context.lineWidth = brushSize;
+    //     context.lineCap = 'square'
+    //     context.strokeStyle = paintColor;
+
+    //     context.lineTo(e.clientX, e.clientY);
+    //     context.stroke();
+    //     context.beginPath();
+    //     context.moveTo(e.clientX, e.clientY)
+
+    //     // context.beginPath();
+    //     // context.moveTo(0, 0);
+    //     // context.lineTo(300, 500);
+    //     // context.stroke();
+
+    // }
+    function drawBrush(e) {
         if (!painting) return;
         context.lineWidth = brushSize;
         context.lineCap = 'round'
@@ -42,10 +66,23 @@ window.addEventListener('load', () => {
         context.beginPath();
         context.moveTo(e.clientX, e.clientY)
     }
+    // tool selector
+    // let selectedTool = drawBrush
     // EventListeners
     canvas.addEventListener('mousedown', startPosition);
     canvas.addEventListener('mouseup', finishedPosition);
-    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mousemove', drawBrush);
+
+    // lineBrush.addEventListener('click', function (e) {
+    //     // selectedTool = squareBrush;
+    //     // console.log(selectedTool);
+    //     canvas.addEventListener('mousemove', squareBrush);
+    // })
+    // paintBrush.addEventListener('click', function (e) {
+    //     // selectedTool = drawBrush;
+    //     // console.log(selectedTool);
+    //     canvas.addEventListener('mousemove', drawBrush);
+    // })
 
     const toolBox = document.querySelector('#toolBox')
     const button = document.querySelector('button');
@@ -60,59 +97,20 @@ window.addEventListener('load', () => {
     const orange = document.querySelector('#orange');
     const purple = document.querySelector('#purple');
     const currentColor = document.querySelectorAll('.color')
+
+    // eraser option
     eraser.addEventListener('click', function (e) {
         context.strokeStyle = `${eraser.value}`;
         toolBox.style.border = `5px solid ${eraser.value}`
     })
-
+    // selected paint color
     currentColor.forEach((color) => {
         color.addEventListener('click', (e) => {
             context.strokeStyle = `${color.value}`;
             toolBox.style.border = `5px solid ${color.value}`
         });
     });
-
-    // currentColor.addEventListener('click', (e) => {
-    //     console.log(target.value);
-    // })
-
-    // black.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${black.value}`;
-    //     toolBox.style.border = `5px solid ${black.value}`
-    // })
-    // red.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${red.value}`;
-    //     toolBox.style.border = `5px solid ${red.value}`
-    // })
-    // blue.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${blue.value}`;
-    //     toolBox.style.border = `5px solid ${blue.value}`
-    // })
-    // green.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${green.value}`;
-    //     toolBox.style.border = `5px solid ${green.value}`
-    // })
-    // pink.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${pink.value}`;
-    //     toolBox.style.border = `5px solid ${pink.value}`
-    // })
-    // brown.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${brown.value}`;
-    //     toolBox.style.border = `5px solid ${brown.value}`
-    // })
-    // yellow.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${yellow.value}`;
-    //     toolBox.style.border = `5px solid ${yellow.value}`
-    // })
-    // orange.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${orange.value}`;
-    //     toolBox.style.border = `5px solid ${orange.value}`
-    // })
-    // purple.addEventListener('click', function (e) {
-    //     context.strokeStyle = `${purple.value}`;
-    //     toolBox.style.border = `5px solid ${purple.value}`
-    // })
-
+    // Selected Brush Size
     const selectedSize = document.querySelector('#brushSize')
     const currentSize = document.querySelector('#currentSize')
     let brushSize = '';
@@ -121,7 +119,7 @@ window.addEventListener('load', () => {
         brushSize = selectedSize.value;
         currentSize.textContent = `${selectedSize.value}`;
     })
-
+    // Clear Canvas
     const clearAll = document.querySelector('#clearAll')
 
     clearAll.addEventListener('click', () => {
